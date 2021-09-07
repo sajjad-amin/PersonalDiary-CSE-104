@@ -6,7 +6,7 @@ void createDirectory(char dirName[]){
     if(dir){
         closedir(dir);
     } else {
-        mkdir("notes");
+        mkdir(dirName);
     }
 }
 int fileExists(char filename[]){

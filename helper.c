@@ -28,7 +28,6 @@ char *subString(char text[], char delim[], int position){
         return remainder;
     }
 }
-
 char *randomString(){
     static char random[20];
     itoa(time(NULL), random, 10);

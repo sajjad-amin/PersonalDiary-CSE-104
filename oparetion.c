@@ -37,6 +37,10 @@ void writeNewNote(){
     } else{
         return;
     }
+    memset(title, 0, sizeof(title));
+    memset(description, 0, sizeof(description));
+    memset(data, 0, sizeof(data));
+    memset(path, 0, sizeof(path));
 }
 
 void readNotes(char path[]){
@@ -73,14 +77,18 @@ void readNotes(char path[]){
         }
         if(position > 0){
             int noteIndex;
-            printf("\n\nSelect note : ");
+            printf("\n\nSelect 0 to back\n\nSelect note : ");
             scanf("%d", &noteIndex);
-            showDetailsNote(list[noteIndex - 1]);
+            if(noteIndex > 0){
+                showDetailsNote(list[noteIndex - 1]);
+            } else {
+                return;
+            }
         } else {
             printf("\n\t\t    Note not found!\n\n\n\nPress any key to continue...");
             return;
         }
-        closedir (dp);
+        closedir(dp);
     }
 }
 
@@ -138,5 +146,11 @@ void modifyNote(struct ListStructure details){
         clearConsole();
         writeRecord(path, data, "w");
         printf("\n\"%s\" has modified!\nPress any key to continue...", details.title);
+    } else {
+        return;
     }
+    memset(title, 0, sizeof(title));
+    memset(description, 0, sizeof(description));
+    memset(data, 0, sizeof(data));
+    memset(path, 0, sizeof(path));
 }
